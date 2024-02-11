@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../../Css/Register.css"
+import axiosInstance from "../../helpers/Axios";
 const RegisterScreen = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -9,6 +10,7 @@ const RegisterScreen = () => {
   const [confirmpassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  
 
   const registerHandler = async (e) => {
     e.preventDefault();
@@ -23,8 +25,7 @@ const RegisterScreen = () => {
     }
 
     try {
-      const { data } = await axios.post(
-        "/auth/register",
+      const { data } = await axiosInstance.post("/register",
         {
           username,
           email,

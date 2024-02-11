@@ -1,4 +1,5 @@
 import axios from 'axios';
+import axiosInstance from '../../helpers/Axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams, Link } from 'react-router-dom';
 import "../../Css/DetailStory.css"
@@ -28,7 +29,7 @@ const DetailStory = () => {
       setLoading(true)
       var activeUser = {}
       try {
-        const { data } = await axios.get("/auth/private", {
+        const { data } = await axiosInstance.get("/private", {
           headers: {
             "Content-Type": "application/json",
             authorization: `Bearer ${localStorage.getItem("authToken")}`,
@@ -44,7 +45,7 @@ const DetailStory = () => {
       }
 
       try {
-        const { data } = await axios.post(`/story/${slug}`, { activeUser })
+        const { data } = await axiosInstance.post(`/story/${slug}`, { activeUser })
         setStory(data.data)
         setLikeStatus(data.likeStatus)
         setLikeCount(data.data.likeCount)
@@ -84,7 +85,7 @@ const DetailStory = () => {
     }, 1500)
 
     try {
-      const { data } = await axios.post(`/story/${slug}/like`, { activeUser }, {
+      const { data } = await axiosInstance.post(`/story/${slug}/like`, { activeUser }, {
         headers: {
           "Content-Type": "application/json",
           authorization: `Bearer ${localStorage.getItem("authToken")}`,
@@ -109,7 +110,7 @@ const DetailStory = () => {
 
       try {
 
-        await axios.delete(`/story/${slug}/delete`, {
+        await axiosInstance.delete(`/story/${slug}/delete`, {
           headers: {
             "Content-Type": "application/json",
             authorization: `Bearer ${localStorage.getItem("authToken")}`,
@@ -139,7 +140,7 @@ const DetailStory = () => {
 
     try {
 
-      const { data } = await axios.post(`/user/${slug}/addStoryToReadList`, { activeUser }, {
+      const { data } = await axiosInstance.post(`/user/${slug}/addStoryToReadList`, { activeUser }, {
         headers: {
           "Content-Type": "application/json",
           authorization: `Bearer ${localStorage.getItem("authToken")}`,

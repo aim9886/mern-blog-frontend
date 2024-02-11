@@ -1,3 +1,12 @@
+# MERN-BLOG
+This is a Blog App using MERN Stack.
+
+
+<img align="center" alt="" src="./Img/mern-blog-1.png">
+<img align="center" alt="" src="./Img//mern-blog-2.png">
+<img align="center" alt="" src="./Img//mern-blog-3.png">
+<img align="center" alt="" src="./Img/mern-blog-4.png">
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

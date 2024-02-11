@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react'
 import axios from 'axios'
+import axiosInstance from '../../helpers/Axios';
 import Loader from "../GeneralScreens/Loader";
 import { useNavigate, Link } from 'react-router-dom'
 import { FiArrowLeft } from 'react-icons/fi'
@@ -21,7 +22,7 @@ const ReadListPage = () => {
             setLoading(true)
 
             try {
-                const { data } = await (await axios.get(`/user/readList`, config)).data
+                const { data } = await (await axiosInstance.get(`/user/readList`, config)).data
                 setReadList(data)
                 setLoading(false)
             }

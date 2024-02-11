@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
+import axiosInstance from '../../helpers/Axios';
 import "../../Css/Profile.css"
 import { Link, useNavigate } from 'react-router-dom';
 import Loader from "../GeneralScreens/Loader";
@@ -29,7 +30,7 @@ const Profile = () => {
             setLoading(true)
 
             try {
-                const { data } = await axios.get("/user/profile", config)
+                const { data } = await axiosInstance.get("/user/profile", config)
 
                 setUser(data.data)
 

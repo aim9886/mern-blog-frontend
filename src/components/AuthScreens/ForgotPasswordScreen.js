@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import axiosInstance from "../../helpers/Axios";
 import { Link } from "react-router-dom";
 import "../../Css/ForgotPassword.css"
 import { BsArrowBarLeft } from 'react-icons/bs'
@@ -12,7 +13,7 @@ const ForgotPasswordScreen = () => {
     e.preventDefault();
 
     try {
-      const { data } = await axios.post(
+      const { data } = await axiosInstance.post(
         "/auth/forgotpassword",
         { email }
       );
